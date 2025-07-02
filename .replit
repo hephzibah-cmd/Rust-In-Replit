@@ -1,5 +1,6 @@
-run = "chmod +x tooling/fcc && fcc welcome"
+run = "cargo run --bin fcc"
 language = "nix"
+modules = ["nodejs-20", "nix", "bash", "rust-stable"]
 
 [env]
 npm_config_prefix = "/home/runner/$REPL_SLUG/.config/npm/node_global"
@@ -19,10 +20,13 @@ pattern = "**/*.rs"
 start = "rust-analyzer"
 
 [nix]
-channel = "stable-22_05"
+channel = "stable-24_05"
 
 [debugger]
 support = false
 
 [gitHubImport]
 requiredFiles = [".replit", "replit.nix"]
+
+[deployment]
+run = ["sh", "-c", "cargo run"]
